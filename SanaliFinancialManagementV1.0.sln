@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFM API", "SFM API\SFM API.csproj", "{8EBA148D-FE3E-41B5-8DED-F1DBE8A858AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFM Client", "SFM Client\SFM Client.csproj", "{A3FDF97A-5BC4-4BF6-9DE3-3C84FAA0E9A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{8EBA148D-FE3E-41B5-8DED-F1DBE8A858AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EBA148D-FE3E-41B5-8DED-F1DBE8A858AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EBA148D-FE3E-41B5-8DED-F1DBE8A858AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3FDF97A-5BC4-4BF6-9DE3-3C84FAA0E9A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3FDF97A-5BC4-4BF6-9DE3-3C84FAA0E9A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FDF97A-5BC4-4BF6-9DE3-3C84FAA0E9A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FDF97A-5BC4-4BF6-9DE3-3C84FAA0E9A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
