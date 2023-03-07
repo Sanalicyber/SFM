@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SFM_API.Core;
-using SFM_API.Database.DatabaseModels.AdminModels;
 
 namespace SFM_API.Controllers;
 
@@ -8,9 +7,20 @@ namespace SFM_API.Controllers;
 [Route("[controller]")] //TODO: CHANGE THE NAME FOR SECURITY REASONS
 public class AdminAuthController : ControllerBase
 {
-    [HttpGet(Name = "GetAdminList")]
-    public IEnumerable<AdminDataModel> Get()
+    [HttpGet(Name = "TryLogin")]
+    public IActionResult TryLogin([FromQuery] string username, [FromQuery] string password)
     {
-        return MainManagement.AdminDatabase.GetAdminList();
+        var admin = MainManagement.AdminDatabase.GetAdmin(username);
+        if (admin == null)
+        {
+            return NotFound();
+        }
+
+        if (admin.Password != password)
+        {
+            return Unauthorized();
+        }
+
+        return Ok(admin.Role);
     }
 }

@@ -7,7 +7,7 @@ public static class DummyDataCreator
 {
     public static void CreateDummyData()
     {
-        MainManagement.AdminDatabase.AddAdmin(new AdminDataModel( "Sanali", "Test", "asd@asd.co", AdminRoleType.SuperAdministrator));
-        MainManagement.UserDatabase.AddUser(new UserDataModel("Sanali", "Test", "asd@asd.co", "Ömer", "Hilal"));
+        // MainManagement.AdminDatabase.AddAdmin(new AdminDataModel( "Sanali", "Test", "asd@asd.co", AdminRoleType.SuperAdministrator));
+        // MainManagement.UserDatabase.AddUser(new UserDataModel("Sanali", "Test", "asd@asd.co", "Ömer", "Hilal"));
     }
 }

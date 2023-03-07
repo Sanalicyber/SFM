@@ -44,4 +44,9 @@ public class AdminDatabase : DatabaseBase
     {
         return Connection.Table<AdminDataModel>().ToList();
     }
+
+    public AdminDataModel GetAdmin(string username)
+    {
+        return Connection.Get<AdminDataModel>(x => x.Username == username);
+    }
 }

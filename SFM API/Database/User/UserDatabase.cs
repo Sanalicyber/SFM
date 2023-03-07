@@ -45,4 +45,14 @@ public class UserDatabase : DatabaseBase
     {
         return Connection.Table<UserDataModel>().ToList();
     }
+
+    public UserDataModel GetUser(int id)
+    {
+        return Connection.Get<UserDataModel>(x => x.ID == id);
+    }
+    
+    public UserDataModel GetUser(string username)
+    {
+        return Connection.Get<UserDataModel>(x => x.Username == username);
+    }
 }
