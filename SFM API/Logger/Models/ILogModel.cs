@@ -6,4 +6,5 @@ public interface ILogModel
 {
     [PrimaryKey, AutoIncrement]
     public int ID { get; set; }
+    public DateTime Time { get; set; }
 }

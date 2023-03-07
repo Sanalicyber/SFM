@@ -1,6 +1,6 @@
 ﻿namespace SFM_API.Logger;
 
-public class SLogger
+public static class SLogger
 {
     
 }

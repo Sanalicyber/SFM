@@ -5,6 +5,5 @@ public enum LogExceptionType
     Database,
     Logger,
     UserDatabase,
-    MainDatabase,
-    
+    MainDatabase
 }
