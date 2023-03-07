@@ -2,13 +2,12 @@
 
 namespace SFM_API.Database.User;
 
-public class UserDatabase : DatabaseBase
+public class UserContentDatabase : DatabaseBase
 {
-    public string DatabaseName => "UserDatabase.sqlite";
-
+    public string DatabaseName => "ContentDatabase.sqlite";
     private SQLiteConnection Connection;
 
-    public UserDatabase()
+    public UserContentDatabase()
     {
         if (!Directory.Exists(DatabaseFolderPath))
         {
@@ -16,6 +15,6 @@ public class UserDatabase : DatabaseBase
         }
 
         Connection = new SQLiteConnection(DatabaseFolderPath + DatabaseName);
-        Console.WriteLine("UserDatabase created");
+        Console.WriteLine("UserContentDatabase created");
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SFM_API.Database;
 
-public interface IDatabase
+public class DatabaseBase
 {
     protected const string DatabaseFolderPath = "C://SFM/Database/";
     protected string DatabaseName { get; }

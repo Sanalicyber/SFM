@@ -1,3 +1,5 @@
+using SFM_API.Core;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -14,5 +16,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+MainManagement.InitProject();
 
 app.Run();
