@@ -1,24 +1,22 @@
 ﻿using System.Text;
 
-namespace SFM_API.Database.DatabaseModels;
+namespace SFM_API.Database.DatabaseModels.AdminModels;
 
-public class UserDataModel : IDatabaseModel
+public class AdminDataModel : IDatabaseModel
 {
     public int ID { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
     public string Email { get; set; }
-    public string Name { get; set; }
-    public string Surname { get; set; }
+    public AdminRoleType Role { get; set; }
 
-    public UserDataModel(int id, string username, string password, string email, string name, string surname)
+    public AdminDataModel(int id, string username, string password, string email, AdminRoleType role)
     {
         ID = id;
         Username = username;
         Password = password;
         Email = email;
-        Name = name;
-        Surname = surname;
+        Role = role;
     }
 
     public override string ToString()
@@ -28,8 +26,7 @@ public class UserDataModel : IDatabaseModel
         builder.Append("Username: ").Append(Username).AppendLine();
         builder.Append("Password: ").Append(Password).AppendLine();
         builder.Append("Email: ").Append(Email).AppendLine();
-        builder.Append("Name: ").Append(Name).AppendLine();
-        builder.Append("Surname: ").Append(Surname).AppendLine();
+        builder.Append("Role: ").Append(Role).AppendLine();
         return builder.ToString();
     }
 }

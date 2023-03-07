@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SFM_API.Models;
 
 namespace SFM_API.Controllers;
 

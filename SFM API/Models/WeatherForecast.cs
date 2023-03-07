@@ -1,4 +1,4 @@
-namespace SFM_API;
+namespace SFM_API.Models;
 
 public class WeatherForecast
 {
