@@ -6,12 +6,15 @@ namespace SFM_API.Core;
 
 public static class MainManagement
 {
-    internal static AdminDatabase AdminDatabase => new ();
-    internal static UserDatabase UserDatabase => new ();
-    internal static UserContentDatabase UserContentDatabase => new ();
+    internal static AdminDatabase AdminDatabase { get; set; }
+    internal static UserDatabase UserDatabase { get; set; }
+    internal static UserContentDatabase UserContentDatabase { get; set; }
 
     public static void InitProject()
     {
+        AdminDatabase = new AdminDatabase();
+        UserDatabase = new UserDatabase();
+        UserContentDatabase = new UserContentDatabase();
         DummyDataCreator.CreateDummyData();
         SLogger.Initialize();
     }

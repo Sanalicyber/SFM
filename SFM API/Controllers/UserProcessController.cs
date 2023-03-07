@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SFM_API.Controllers.RequestModels;
+using SFM_API.Controllers.ResponseModels;
 using SFM_API.Core;
 using SFM_API.Extensions;
 
@@ -33,5 +34,18 @@ public class UserProcessController : ControllerBase
         }
 
         return Ok(MainManagement.UserContentDatabase.GetIncome(userId).ToIncomeResponseModel());
+    }
+
+    [HttpGet("GetRemainsForUser.{userId}", Name = "GetRemainsForUser")]
+    public IActionResult GetRemainsForUser(int userId)
+    {
+        if (!MainManagement.UserContentDatabase.IsIncomeExists(userId))
+        {
+            return Unauthorized();
+        }
+
+        var income = MainManagement.UserContentDatabase.GetIncome(userId);
+        var remains = income.Salary + income.Bonus - income.TotalOutgoing;
+        return Ok(new UserRemainsResponseModel(remains));
     }
 }
