@@ -17,4 +17,9 @@ public class UserContentDatabase : DatabaseBase
         Connection = new SQLiteConnection(DatabaseFolderPath + DatabaseName);
         Console.WriteLine("UserContentDatabase created");
     }
+
+    public void CreateTables()
+    {
+        // Connection.CreateTable<UserContentDataModel>();
+    }
 }

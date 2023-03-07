@@ -1,25 +1,27 @@
 ﻿using System.Text;
+using SQLite;
 
 namespace SFM_API.Database.DatabaseModels.UserModels;
 
 public class UserDataModel : IDatabaseModel
 {
-    public int ID { get; set; }
-    public string Username { get; set; }
+    [PrimaryKey, AutoIncrement] public int ID { get; set; }
+    [Unique] public string Username { get; set; }
     public string Password { get; set; }
-    public string Email { get; set; }
+    [Unique] public string Email { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
 
-    public UserDataModel(int id, string username, string password, string email, string name, string surname)
+    public UserDataModel(string username, string password, string email, string name, string surname)
     {
-        ID = id;
         Username = username;
         Password = password;
         Email = email;
         Name = name;
         Surname = surname;
     }
+
+    public UserDataModel() { }
 
     public override string ToString()
     {
