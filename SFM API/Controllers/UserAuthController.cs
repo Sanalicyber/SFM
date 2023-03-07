@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SFM_API.Controllers.RequestModels;
 using SFM_API.Core;
-using SFM_API.Database.DatabaseModels.UserModels;
 using SFM_API.Extensions;
+using SFM_API.Logger;
 
 namespace SFM_API.Controllers;
 
@@ -10,13 +10,15 @@ namespace SFM_API.Controllers;
 [Route("[controller]")] //TODO: CHANGE THE NAME FOR SECURITY REASONS
 public class UserAuthController : ControllerBase
 {
-    [HttpGet(Name = "GetUserList")]
+    [HttpGet("GetUsers", Name = "GetUserList")]
     public IActionResult Get()
     {
-        return Ok(MainManagement.UserDatabase.GetUserList());
+        //log process
+        SLogger.Log("User List requested.");
+        return Ok(MainManagement.UserDatabase.GetUserList().ToUserDataResponseModel());
     }
 
-    [HttpGet("{id}", Name = "GetUser")]
+    [HttpGet("GetUser.{id}", Name = "GetUser")]
     public IActionResult Get(int id)
     {
         var user = MainManagement.UserDatabase.GetUser(id);
@@ -25,22 +27,25 @@ public class UserAuthController : ControllerBase
             return NotFound();
         }
 
-        return Ok(user);
+        //log user data
+        SLogger.Log($"User {user.Username} with email {user.Email} requested his data.");
+        return Ok(user.ToUserDataResponseModel());
     }
 
-    [HttpPost(Name = "RegisterUser")]
+    [HttpPost("RegisterUser", Name = "RegisterUser")]
     public IActionResult RegisterUserPost([FromBody] RegisterUserDataModel user)
     {
         if (MainManagement.UserDatabase.AddUser(user.ToUserDataModel()))
         {
+            SLogger.Log($"User {user.Username} registered with email {user.Email}.");
             return Ok();
         }
-
+        
         return BadRequest();
     }
 
-    [HttpGet(Name = "TryLogin")]
-    public IActionResult TryLogin([FromQuery] string username, [FromQuery] string password)
+    [HttpGet("{username}, {password}", Name = "TryLoginAsUser")]
+    public IActionResult TryLoginAsUser(string username, string password)
     {
         var user = MainManagement.UserDatabase.GetUser(username);
         if (user == null)
@@ -50,9 +55,11 @@ public class UserAuthController : ControllerBase
 
         if (user.Password != password)
         {
+            SLogger.Log($"User {user.Username} tried to login with wrong password.");
             return Unauthorized();
         }
 
+        SLogger.Log($"User {user.Username} logged in.");
         return Ok();
     }
 }

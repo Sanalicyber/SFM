@@ -25,22 +25,22 @@ public class UserDatabase : DatabaseBase
     {
         Connection.CreateTable<UserDataModel>();
     }
-    
+
     public bool AddUser(UserDataModel user)
     {
         return Connection.Insert(user) == 1;
     }
-    
+
     public bool RemoveUser(UserDataModel user)
     {
         return Connection.Delete(user) == 1;
     }
-    
+
     public bool UpdateUser(UserDataModel user)
     {
         return Connection.Update(user) == 1;
     }
-    
+
     public List<UserDataModel> GetUserList()
     {
         return Connection.Table<UserDataModel>().ToList();
@@ -50,7 +50,7 @@ public class UserDatabase : DatabaseBase
     {
         return Connection.Get<UserDataModel>(x => x.ID == id);
     }
-    
+
     public UserDataModel GetUser(string username)
     {
         return Connection.Get<UserDataModel>(x => x.Username == username);

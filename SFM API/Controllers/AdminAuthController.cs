@@ -7,8 +7,8 @@ namespace SFM_API.Controllers;
 [Route("[controller]")] //TODO: CHANGE THE NAME FOR SECURITY REASONS
 public class AdminAuthController : ControllerBase
 {
-    [HttpGet(Name = "TryLogin")]
-    public IActionResult TryLogin([FromQuery] string username, [FromQuery] string password)
+    [HttpGet(Name = "TryLoginAsAdmin")]
+    public IActionResult TryLoginAsAdmin([FromQuery] string username, [FromQuery] string password)
     {
         var admin = MainManagement.AdminDatabase.GetAdmin(username);
         if (admin == null)
