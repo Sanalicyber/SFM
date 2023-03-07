@@ -5,7 +5,7 @@ namespace SFM_API.Database.Admin;
 
 public class AdminDatabase : DatabaseBase
 {
-    public string DatabaseName => "AdminDatabase.sqlite";
+    protected override string DatabaseName => "AdminDatabase.sqlite";
     private SQLiteConnection Connection;
 
     public AdminDatabase()
@@ -15,7 +15,7 @@ public class AdminDatabase : DatabaseBase
             Directory.CreateDirectory(DatabaseFolderPath);
         }
 
-        Connection = new SQLiteConnection(DatabaseFolderPath + DatabaseName);
+        Connection = new SQLiteConnection(DatabasePath);
         Console.WriteLine("AdminDatabase created");
         CreateTables();
     }

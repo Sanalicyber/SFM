@@ -2,7 +2,7 @@
 
 namespace SFM_API.Database.DatabaseModels;
 
-public interface IDatabaseModel
+public class BaseDatabaseModel
 {
     [PrimaryKey, AutoIncrement]
     public int ID { get; set; }

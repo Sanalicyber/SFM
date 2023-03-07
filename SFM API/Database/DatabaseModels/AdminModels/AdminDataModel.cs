@@ -3,9 +3,8 @@ using SQLite;
 
 namespace SFM_API.Database.DatabaseModels.AdminModels;
 
-public class AdminDataModel : IDatabaseModel
+public class AdminDataModel : BaseDatabaseModel
 {
-    [AutoIncrement, PrimaryKey] public int ID { get; set; }
     [Unique] public string Username { get; set; }
     public string Password { get; set; }
     [Unique] public string Email { get; set; }
@@ -19,9 +18,7 @@ public class AdminDataModel : IDatabaseModel
         Role = role;
     }
 
-    public AdminDataModel()
-    {
-    }
+    public AdminDataModel() { }
 
     public override string ToString()
     {

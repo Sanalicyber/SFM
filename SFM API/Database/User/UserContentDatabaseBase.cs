@@ -4,7 +4,7 @@ namespace SFM_API.Database.User;
 
 public class UserContentDatabase : DatabaseBase
 {
-    public string DatabaseName => "ContentDatabase.sqlite";
+    protected override string DatabaseName => "ContentDatabase.sqlite";
     private SQLiteConnection Connection;
 
     public UserContentDatabase()
@@ -14,7 +14,7 @@ public class UserContentDatabase : DatabaseBase
             Directory.CreateDirectory(DatabaseFolderPath);
         }
 
-        Connection = new SQLiteConnection(DatabaseFolderPath + DatabaseName);
+        Connection = new SQLiteConnection(DatabasePath);
         Console.WriteLine("UserContentDatabase created");
     }
 

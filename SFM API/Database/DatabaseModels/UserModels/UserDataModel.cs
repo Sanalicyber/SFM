@@ -3,9 +3,8 @@ using SQLite;
 
 namespace SFM_API.Database.DatabaseModels.UserModels;
 
-public class UserDataModel : IDatabaseModel
+public class UserDataModel : BaseDatabaseModel
 {
-    [PrimaryKey, AutoIncrement] public int ID { get; set; }
     [Unique] public string Username { get; set; }
     public string Password { get; set; }
     [Unique] public string Email { get; set; }
