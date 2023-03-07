@@ -31,4 +31,25 @@ public static class ModelExtensions
     {
         return models.Select(model => model.ToUserDataResponseModel());
     }
+    
+    public static UserIncomeModel ToIncomeModel(this SaveDataRequestModel model)
+    {
+        return new UserIncomeModel
+        {
+            Salary = model.Salary,
+            Bonus = model.Bonus,
+            TotalOutgoing = model.TotalOutgoing,
+            UserId = model.UserId
+        };
+    }
+    
+    public static UserIncomeResponseModel ToIncomeResponseModel(this UserIncomeModel model)
+    {
+        return new UserIncomeResponseModel
+        {
+            Salary = model.Salary,
+            Bonus = model.Bonus,
+            TotalOutgoing = model.TotalOutgoing
+        };
+    }
 }

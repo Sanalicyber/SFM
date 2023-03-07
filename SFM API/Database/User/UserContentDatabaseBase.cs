@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using SFM_API.Database.DatabaseModels.UserModels;
+using SQLite;
 
 namespace SFM_API.Database.User;
 
@@ -16,10 +17,36 @@ public class UserContentDatabase : DatabaseBase
 
         Connection = new SQLiteConnection(DatabasePath);
         Console.WriteLine("UserContentDatabase created");
+        CreateTables();
     }
 
     public void CreateTables()
     {
-        // Connection.CreateTable<UserContentDataModel>();
+        Connection.CreateTable<UserIncomeModel>();
+    }
+    
+    public bool IsIncomeExists(int userId)
+    {
+        return Connection.Table<UserIncomeModel>().Any(x => x.UserId == userId);
+    }
+    
+    public bool AddIncome(UserIncomeModel incomeModel)
+    {
+        return Connection.Insert(incomeModel) == 1;
+    }
+    
+    public void UpdateIncome(UserIncomeModel incomeModel)
+    {
+        Connection.Update(incomeModel);
+    }
+    
+    public void DeleteIncome(UserIncomeModel incomeModel)
+    {
+        Connection.Delete(incomeModel);
+    }
+    
+    public UserIncomeModel GetIncome(int userId)
+    {
+        return Connection.Table<UserIncomeModel>().FirstOrDefault(x => x.UserId == userId);
     }
 }
